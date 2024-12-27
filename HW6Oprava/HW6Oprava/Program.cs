@@ -10,13 +10,8 @@ namespace HW6Oprava
     {
         static void Main(string[] args)
         {
-            int[] array = new int[5];
-            array[0] = 1;
-            array[1] = 2;
-            array[2] = 3;
-            array[3] = 4;
-            array[4] = 5;
-
+            int[] array = new int[5] { 1, 2, 3, 4, 5 }; ;
+            
             //1
             int[] Ascent = VzostupnePoradie(array);
             Poradie(Ascent);
@@ -64,8 +59,9 @@ namespace HW6Oprava
                 return array;
             }
 
-            Array.Sort(array);
-            return array;
+            int[] copyArray = (int[])array.Clone();
+            Array.Sort(copyArray); 
+            return copyArray;
         }
 
         //2
@@ -82,9 +78,10 @@ namespace HW6Oprava
                 Console.WriteLine("Array is empty.");
                 return array;
             }
-
-            Array.Reverse(array);
-            return array;
+ 
+            int[] copyArray = (int[])array.Clone(); 
+            Array.Reverse(copyArray); 
+            return copyArray;
         }
 
         //3
@@ -241,10 +238,21 @@ namespace HW6Oprava
 
         private static void Poradie(int[] array)
         {
+            if (array == null)
+            {
+                Console.WriteLine("Array is null.");
+                return;
+            }
+
+            if (array.Length == 0)
+            {
+                Console.WriteLine("Array is empty.");
+                return;
+            }
 
             foreach (int element in array)
             {
-                Console.Write(element);
+                Console.Write(element + " ");
             }
 
             Console.WriteLine();
